@@ -11,12 +11,7 @@ public class MainActivity extends AppCompatActivity {
             "Indiana", "China", "Australia", "Portugal", "USA", "New Zealand",
             "Canada", "Brazil", "Japan", "Germany", "United Kingdom", "France",
             "Italy", "Russia", "South Korea", "Spain", "Mexico", "Indonesia",
-            "Netherlands", "Switzerland", "Saudi Arabia", "Sweden", "Turkey",
-            "Poland", "Norway", "Belgium", "Argentina", "Austria", "Thailand",
-            "Iran", "Ukraine", "Denmark", "South Africa", "Egypt", "Finland",
-            "Greece", "Czech Republic", "Israel", "Ireland", "Singapore",
-            "Malaysia", "Philippines", "Vietnam", "Hungary", "Romania",
-            "New Zealand", "Australia", "China", "India"
+            "Netherlands", "Switzerland", "Saudi Arabia", "Sweden", "Turkey"
     };
 
     int[] countriesImages = {
