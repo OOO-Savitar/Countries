@@ -7,7 +7,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 public class MainActivity extends AppCompatActivity {
-    String[] countries = {
+    String[] countriesNames = {
             "Indiana", "China", "Australia", "Portugal", "USA", "New Zealand",
             "Canada", "Brazil", "Japan", "Germany", "United Kingdom", "France",
             "Italy", "Russia", "South Korea", "Spain", "Mexico", "Indonesia",
@@ -19,13 +19,24 @@ public class MainActivity extends AppCompatActivity {
             "New Zealand", "Australia", "China", "India"
     };
 
+    int[] countriesImages = {
+            R.drawable.india, R.drawable.china, R.drawable.australia,
+            R.drawable.portugal, R.drawable.united_states, R.drawable.new_zealand,
+            R.drawable.canada, R.drawable.brazil, R.drawable.japan, R.drawable.germany,
+            R.drawable.united_kingdom, R.drawable.france, R.drawable.italy, R.drawable.russia,
+            R.drawable.south_korea, R.drawable.spain, R.drawable.mexico, R.drawable.indonesia,
+            R.drawable.netherlands, R.drawable.switzerland, R.drawable.saudi_arabia,
+            R.drawable.sweden, R.drawable.turkey
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ListView countriesList = findViewById(R.id.countriesList);
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, countries);
-        countriesList.setAdapter(adapter);
+        ListView listView;
+        listView = findViewById(R.id.countriesList);
+        CustomBaseAdapter customBaseAdapter = new CustomBaseAdapter(getApplicationContext(), countriesNames, countriesImages);
+        listView.setAdapter(customBaseAdapter);
     }
 }
