@@ -13,8 +13,8 @@ import java.util.List;
 
 public class CustomBaseAdapter extends BaseAdapter {
 
-    private Context context;
-    private List<Country> countryList;
+    private final Context context;
+    private final List<Country> countryList;
 
     public CustomBaseAdapter(Context context, List<Country> countryList) {
         this.context = context;

@@ -1,8 +1,8 @@
 package com.example.countries;
 
 public class Country {
-    private String name;
-    private int flagId;
+    private final String name;
+    private final int flagId;
 
     public Country(String name, int flagId) {
         this.name = name;
