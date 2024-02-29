@@ -3,20 +3,20 @@ package com.example.countries;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     String[] countriesNames = {
             "Indiana", "China", "Australia", "Portugal", "USA", "New Zealand",
             "Canada", "Brazil", "Japan", "Germany", "United Kingdom", "France",
             "Italy", "Russia", "South Korea", "Spain", "Mexico", "Indonesia",
-            "Netherlands", "Switzerland", "Saudi Arabia", "Sweden", "Turkey",
-            "Poland", "Norway", "Belgium", "Argentina", "Austria", "Thailand",
-            "Iran", "Ukraine", "Denmark", "South Africa", "Egypt", "Finland",
-            "Greece", "Czech Republic", "Israel", "Ireland", "Singapore",
-            "Malaysia", "Philippines", "Vietnam", "Hungary", "Romania",
-            "New Zealand", "Australia", "China", "India"
+            "Netherlands", "Switzerland", "Saudi Arabia", "Sweden", "Turkey"
     };
 
     int[] countriesImages = {
@@ -34,9 +34,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ListView listView;
-        listView = findViewById(R.id.countriesList);
-        CustomBaseAdapter customBaseAdapter = new CustomBaseAdapter(getApplicationContext(), countriesNames, countriesImages);
+        List<Country> countryList = new ArrayList<>();
+        ListView listView = findViewById(R.id.countriesList);
+
+        for (int i = 0; i < countriesNames.length; i++) {
+            countryList.add(new Country(countriesNames[i], countriesImages[i]));
+        }
+
+        CustomBaseAdapter customBaseAdapter = new CustomBaseAdapter(getApplicationContext(), countryList);
         listView.setAdapter(customBaseAdapter);
     }
 }

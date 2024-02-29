@@ -9,43 +9,48 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.List;
+
 public class CustomBaseAdapter extends BaseAdapter {
 
-    Context context;
-    String[] countriesList;
-    int[] imagesList;
-    LayoutInflater inflater;
+    private Context context;
+    private List<Country> countryList;
 
-
-    public CustomBaseAdapter(Context ctx, String[] countriesList, int[] imagesList) {
-        this.context = ctx;
-        this.countriesList = countriesList;
-        this.imagesList = imagesList;
-        inflater = LayoutInflater.from(ctx);
+    public CustomBaseAdapter(Context context, List<Country> countryList) {
+        this.context = context;
+        this.countryList = countryList;
     }
+
     @Override
     public int getCount() {
-        return imagesList.length;
+        return countryList.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return null;
+        return countryList.get(i);
     }
 
     @Override
     public long getItemId(int i) {
-        return 0;
+        return i;
     }
 
     @SuppressLint({"ViewHolder", "InflateParams"})
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        view = inflater.inflate(R.layout.activity_custom_list_view, null);
+        if (view == null) {
+            view = LayoutInflater.from(context).inflate(R.layout.activity_custom_list_view, viewGroup, false);
+        }
+
+        Country country = (Country) getItem(i);
+
         TextView textView = view.findViewById(R.id.countryTextView);
         ImageView countryImage = view.findViewById(R.id.countryImageView);
-        textView.setText(countriesList[i]);
-        countryImage.setImageResource(imagesList[i]);
+
+        textView.setText(country.getName());
+        countryImage.setImageResource(country.getFlagId());
+
         return view;
     }
 }
